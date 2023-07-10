@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 // color themes
-const background = Color(0XFFFFFFFF);
+const background1 = Color(0XFFFFFFFF);
+const background2 = Color(0XFFCBEAB9);
+const background3 = Color(0XFFF6ECC9);
+
+
+
+
 
 //margin from the top
 const bmargintop = EdgeInsets.only(top: 50);

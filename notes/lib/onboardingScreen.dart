@@ -13,7 +13,7 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: background,
+      backgroundColor: background1,
       body: SingleChildScrollView(
         child: Container(
           margin: bmargintop,
