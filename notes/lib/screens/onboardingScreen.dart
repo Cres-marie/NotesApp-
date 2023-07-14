@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/constants.dart';
 import 'package:notes/screens/home.dart';
+import 'package:notes/screens/tasks.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -50,7 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   ),
                   IconButton(
                     onPressed: () {
-                      
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Tasks()));
                     },
                     icon: Transform.scale(
                       scale: 4.8 ,
