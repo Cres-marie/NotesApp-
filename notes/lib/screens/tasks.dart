@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/screens/calendar.dart';
 
 import '../constants.dart';
 import 'home.dart';
@@ -61,7 +62,7 @@ class _TasksState extends State<Tasks> {
 
       floatingActionButton: FloatingActionButton(
         onPressed:() {
-          //Navigator.push(context, MaterialPageRoute(builder: (context) => CreateNote()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Calendar()));
         },
         
         backgroundColor: Colors.black,
