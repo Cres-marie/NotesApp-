@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:notes/createNote.dart';
-import 'package:notes/onboardingScreen.dart';
+import 'package:notes/screens/createNote.dart';
+import 'package:notes/screens/onboardingScreen.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 import 'view.dart';
 
 class Home extends StatefulWidget {

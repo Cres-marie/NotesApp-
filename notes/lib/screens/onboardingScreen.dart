@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/constants.dart';
-import 'package:notes/home.dart';
+import 'package:notes/screens/home.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -22,7 +22,7 @@ class _OnBoardingState extends State<OnBoarding> {
             children: [
               Image.asset('images/walking.png'),
               SizedBox(height: 20,),
-              Text('Welcome \n to my Smolleys \n toolbox',style: TextStyle(color: greenColor, fontWeight: FontWeight.bold, fontSize: 30),),
+              Center(child: Text('Welcome to my Smolleys toolbox', maxLines: 3, textAlign: TextAlign.center, style: TextStyle(color: greenColor, fontWeight: FontWeight.bold, fontSize: 30),)),
               SizedBox(height: 100,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

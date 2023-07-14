@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/constants.dart';
-import 'package:notes/onboardingScreen.dart';
+import 'package:notes/screens/onboardingScreen.dart';
 
 import 'home.dart';
 
