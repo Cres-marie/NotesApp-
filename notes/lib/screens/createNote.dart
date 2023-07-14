@@ -107,6 +107,7 @@ class _CreateNoteState extends State<CreateNote> {
                               decoration: InputDecoration(
                                 hintText: 'Type to Continue ...',
                                 border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),  // Add spacing or padding here
                                 
                               ),
                               validator: (value) {
