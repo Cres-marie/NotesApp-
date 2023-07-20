@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:notes/sqlite.dart';
 
 import '../constants.dart';
 import 'home.dart';
 import 'onboardingScreen.dart';
 
 class CreateNote extends StatefulWidget {
-  const CreateNote({super.key});
+  final Map note;
+   CreateNote({super.key, required this.note});
 
   @override
   State<CreateNote> createState() => _CreateNoteState();
 }
 
 class _CreateNoteState extends State<CreateNote> {
-
+  final mysqlite = sqlite();
   final _formKey = GlobalKey<FormState>();
+  TextEditingController title = TextEditingController();
+  TextEditingController body = TextEditingController();
+  @override
+  void initState() {
 
+    super.initState();
+    if(widget.note.isNotEmpty){
+    title = TextEditingController(text:widget.note['Title']);
+    body = TextEditingController(text: widget.note['notes']);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,14 +83,18 @@ class _CreateNoteState extends State<CreateNote> {
                     child: Form(
                       key: _formKey,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           
                           TextFormField(
                               //initialValue: 'Note Title',  
+                              controller: title,
+                              style: TextStyle( fontSize: 20),
                               keyboardType: TextInputType.text,
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                 hintText: 'Note Title',
+                                hintStyle: TextStyle( fontSize: 20),
                                 border: InputBorder.none,
                                 prefixIcon: Image.asset('images/editting.png',color: Colors.black,)
                               ),
@@ -99,6 +115,7 @@ class _CreateNoteState extends State<CreateNote> {
                             ),
       
                             child: TextFormField(
+                              controller: body,
                               //initialValue: 'Note Title',  
                               //keyboardType: TextInputType.multiline,
                               maxLines: null,
@@ -133,7 +150,9 @@ class _CreateNoteState extends State<CreateNote> {
                   Column(
                     children: [
                       IconButton(
-                        onPressed: (){}, 
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                        }, 
                         icon: Transform.scale(
                           scale: 1.5 ,
                           child: Image.asset('images/dontsave.png')
@@ -146,7 +165,21 @@ class _CreateNoteState extends State<CreateNote> {
                   Column(
                     children: [
                       IconButton(
-                        onPressed: (){}, 
+                        onPressed: () async{
+                          if(_formKey.currentState!.validate()){
+                            if(widget.note.isEmpty){
+                               final id = await mysqlite.insertdata(title.text, body.text);
+                            if(id>0){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                            }
+                            }
+                            else{
+                              await mysqlite.update(widget.note['_id'], title.text, body.text);
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                            }
+                           
+                          }
+                        }, 
                         icon: Transform.scale(
                           scale: 1.5 ,
                           child: Image.asset('images/save.png')

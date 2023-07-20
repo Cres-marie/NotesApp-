@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes/constants.dart';
 import 'package:notes/screens/home.dart';
 import 'package:notes/screens/tasks.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:notes/notification.dart';
+
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -11,6 +14,13 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  @override
+  void initState() {
+  
+    super.initState();
+    SmolleyNotification.initialize(flutterLocalNotificationsPlugin);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
